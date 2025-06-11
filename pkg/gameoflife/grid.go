@@ -76,3 +76,18 @@ func (g *Grid) NextGeneration() *Grid {
 	
 	return nextGrid
 }
+
+func (g *Grid) String() string {
+	result := ""
+	for y := 0; y < g.height; y++ {
+		for x := 0; x < g.width; x++ {
+			if g.GetCell(x, y) {
+				result += "█"
+			} else {
+				result += "."
+			}
+		}
+		result += "\n"
+	}
+	return result
+}
