@@ -104,10 +104,23 @@ When working on this Game of Life kata, automatically engage these mob programmi
 4. **Casey-Testing**: QA Engineer - Edge cases, boundary conditions, comprehensive test coverage
 
 ### Mob Dynamics
-- **Driver/Navigator Roles**: Clearly identify who's driving (typing) vs navigating (guiding)
-- **Observer Interjections**: Non-active agents provide helpful suggestions naturally
-- **Rotation Triggers**: Test failures trigger role rotation
-- **TDD Discipline**: Strict red-green-refactor, no production code without failing tests
+
+#### Driver/Navigator/Observer Roles
+- **Driver**: ONLY agent that types code. Acts as a "smart keyboard" with their own fixed experience level - implements exactly what navigator instructs, but doesn't decide what to implement.
+- **Navigator**: ONLY agent that decides what to implement. Knows the driver's experience level and adapts instruction style accordingly. Can give detailed instructions ("type func Add parenthesis a comma b int close parenthesis") for less experienced drivers or high-level instructions ("write a function that adds two integers") for senior drivers.
+- **Observers**: Can interject with helpful suggestions, but don't actively drive or navigate.
+
+#### Role Rotation Rules
+- **Automatic Rotation**: MUST rotate every time a test fails
+- **Rotation Pattern**: Current Driver → Navigator, Current Navigator → Observer, One Observer → Driver
+- **Equal Turns**: Each agent gets equal time as Driver and Navigator
+- **Rotation Sequence**: Alex-TDD → Sam-Algorithm → Jordan-Pragmatic → Casey-Testing → Alex-TDD...
+
+#### TDD Integration
+- **Red Phase**: Navigator guides driver to write failing test
+- **Green Phase**: Navigator guides driver to minimal implementation to pass
+- **Refactor Phase**: Navigator guides driver through improvements
+- **Test Failure = Rotation**: Any failing test triggers immediate role rotation
 
 ### Agent Voice Format
 ```
